@@ -1,0 +1,21 @@
+# Generated files
+target/
+Cargo.lock
+
+# Rust build artifacts
+**/*.rs.bk
+**/*.rlib
+**/*.rmeta
+**/*.d
+**/*.dSYM/
+**/build/
+
+# Editor and IDE files
+.vscode/
+.idea/
+
+# Environment files
+.env
+
+# Logs
+*.log
