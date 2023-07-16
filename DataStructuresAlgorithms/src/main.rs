@@ -19,16 +19,23 @@ fn main() {
     // }
 
     // Example condition: Even numbers are not allowed
-    let condition = |x: i32| x % 2 == 0;
+    // let condition = |x: i32| x % 2 == 0;
 
-    let result = crystal_ball::crystalball::process_array(&arr, condition);
+    // let result = crystal_ball::crystalball::process_array(&arr, condition);
    
-    let low = 2;
-    let high = 5;
-    println!("{:?}", low + (high -low ) / 2 ) ;
-    match result {
-        Ok(()) => println!("Condition met for all elements"),
-        Err(err) => println!("Error: {}", err),
-    }
+    // let low = 2;
+    // let high = 5;
+    // println!("{:?}", low + (high -low ) / 2 ) ;
+    // match result {
+    //     Ok(()) => println!("Condition met for all elements"),
+    //     Err(err) => println!("Error: {}", err),
+    // }
+
+
+    let condition = |x: i32| x >= 30;
+
+    // error because condition will be false for all
+    let result = crystal_ball::crystalball::check_crystal_ball::<SIZE>(&arr, condition);
+    println!("{:?}", result);
 
 }
