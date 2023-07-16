@@ -10,6 +10,7 @@ pub fn init_arr<const SIZE: usize>() -> [i32; SIZE] {
     array
 }
 
+#[allow(dead_code)]
 pub fn process_array(array: &[i32], condition: fn(i32) -> bool) -> Result<(), String> {
     for &element in array {
         // if condition is false, then return Error
@@ -24,6 +25,7 @@ pub fn process_array(array: &[i32], condition: fn(i32) -> bool) -> Result<(), St
 // assumes that condition will be true for first part of array and false for last part.
 // goal is to find last index, in which condition is true, rest will be false
 // returns Ok(index), or Err("String")
+// runs O(sqrt(N)) time
 pub fn check_crystal_ball<const SIZE: usize>(
     array: &[i32],
     condition: fn(i32) -> bool,

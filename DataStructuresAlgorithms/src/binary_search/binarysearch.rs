@@ -1,5 +1,6 @@
 // use std::error::Error;
 
+#[allow(dead_code)]
 pub fn init_arr<const SIZE: usize>() -> [i32; SIZE] {
     let mut array: [i32; SIZE] = [0; SIZE]; // Initialize with default values (0)
 
@@ -10,6 +11,7 @@ pub fn init_arr<const SIZE: usize>() -> [i32; SIZE] {
     array
 }
 
+#[allow(dead_code)]
 // return the Ok(index) of value if in array, otherwise Err("String")
 pub fn process_array(array: &[i32], needle: i32) -> Result<usize, String> {
     let mut low: usize = 0;

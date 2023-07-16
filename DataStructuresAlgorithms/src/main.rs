@@ -2,6 +2,7 @@
 // #![feature(adt_const_params)]
 mod crystal_ball;
 mod binary_search;
+mod bubble_sort;
 fn main() {
     const SIZE: usize = 10;
 
