@@ -26,6 +26,7 @@ pub fn process_array(array: &[i32], condition: fn(i32) -> bool) -> Result<(), St
 // goal is to find last index, in which condition is true, rest will be false
 // returns Ok(index), or Err("String")
 // runs O(sqrt(N)) time
+#[allow(dead_code)]
 pub fn check_crystal_ball<const SIZE: usize>(
     array: &[i32],
     condition: fn(i32) -> bool,
