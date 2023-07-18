@@ -10,6 +10,28 @@ pub fn init_arr<const SIZE: usize>() -> [i32; SIZE] {
     array
 }
 
+
+// 1 ,2 ,4 ,5  n=4
+// f  f  t  t
+// 0  1  2  3
+
+//        check 
+// check 
+//     check
+
+// n= 9
+
+// sqrt(9) = 3
+// sqrt(n) first elements
+
+
+// sqrt(4) = 2
+
+
+// O(n)
+
+// O(sqrt(n)+sqrt(n))
+
 #[allow(dead_code)]
 pub fn process_array(array: &[i32], condition: fn(i32) -> bool) -> Result<(), String> {
     for &element in array {
@@ -119,3 +141,8 @@ mod tests {
         return Ok(());
     }
 }
+
+// TODO extend such that possible to specify 
+// reverse
+// true / false expected first
+

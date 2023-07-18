@@ -1,7 +1,5 @@
 use std::collections::VecDeque;
 
-use crate::linked_lst::linkedlst::Queue;
-
 #[derive(Debug, Clone)]
 pub struct VQueue<T> {
     queue: VecDeque<T>,

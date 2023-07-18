@@ -9,6 +9,11 @@ use crate::linked_lst::linkedlst::*;
 mod vec_queue;
 use crate::vec_queue::vecqueue::*;
 
+mod stack_queue;
+use crate::stack_queue::stack::*;
+
+
+
 #[allow(dead_code)]
 fn main() {
     const SIZE: usize = 10;
@@ -75,5 +80,6 @@ fn main() {
     ///////// LINKED LIST QUEUE END //////
     // let vec_queue: VQueue<i32> = VQueue::new();
     // const SIZE: usize = 10;
-  
+    let condition = |x: i32| x >= 8;
+    println!("{}", condition(1));
 }
