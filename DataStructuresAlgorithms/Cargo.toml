@@ -6,3 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+rand = "0.8.5"
+# cargo bench --bench my_benchmark -- --verbose
+criterion = "0.5.1"
+
+[[bench]]
+name = "my_benchmark"
+harness = false
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+bench = false

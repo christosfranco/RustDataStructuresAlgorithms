@@ -12,7 +12,8 @@ use crate::vec_queue::vecqueue::*;
 mod stack_queue;
 use crate::stack_queue::stack::*;
 
-
+mod quicksort;
+use crate::quicksort::quicksort::*;
 
 #[allow(dead_code)]
 fn main() {
@@ -82,4 +83,7 @@ fn main() {
     // const SIZE: usize = 10;
     let condition = |x: i32| x >= 8;
     println!("{}", condition(1));
+
+    let mut vec = run_benchmark(1000000);
+    println!("{:?}", vec);
 }
