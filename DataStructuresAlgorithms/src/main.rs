@@ -15,6 +15,8 @@ use crate::stack_queue::stack::*;
 mod quicksort;
 use crate::quicksort::quicksort::*;
 
+mod binary_tree;
+use binary_tree::binarytree::*;
 #[allow(dead_code)]
 fn main() {
     const SIZE: usize = 10;
@@ -84,6 +86,17 @@ fn main() {
     let condition = |x: i32| x >= 8;
     println!("{}", condition(1));
 
-    let mut vec = run_benchmark(1000000);
-    println!("{:?}", vec);
+    // let mut vec = run_benchmark(1000000);
+    // println!("{:?}", vec);
+
+    let mut bst = BST::new(10); // Root Node
+
+    BST::insert(&mut bst, 5);
+    BST::insert(&mut bst, 15);
+    BST::insert(&mut bst, 2);
+    BST::insert(&mut bst, 5);
+    BST::insert(&mut bst, 22);
+    BST::insert(&mut bst, 1);
+
+    BST::print(&mut bst);
 }
