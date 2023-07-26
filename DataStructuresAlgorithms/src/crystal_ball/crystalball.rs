@@ -54,7 +54,7 @@ pub fn check_crystal_ball<const SIZE: usize>(
     condition: fn(i32) -> bool,
 ) -> Result<usize, String> {
     // define jump amount sqrt(array.len())
-    let square_root: usize = (SIZE as f64).sqrt().floor() as usize;
+    let square_root: usize = (SIZE as f64).sqrt() as usize;
 
     let mut saved_i = 0;
     // SIZE index excluded, up to and not included
@@ -143,6 +143,6 @@ mod tests {
 }
 
 // TODO extend such that possible to specify 
-// reverse
-// true / false expected first
+    // reverse
+    // true / false expected first
 

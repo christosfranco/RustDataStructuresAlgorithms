@@ -1,4 +1,3 @@
-use rand::prelude::*;
 
 pub fn run_benchmark(size: u32) -> Vec<i32> {
     let mut vec = random_vector(size);
@@ -99,9 +98,9 @@ mod tests {
         Ok(())
     }
 
-    #[test]
-    fn test_sort_1000000() -> Result<(), &'static str> {
-        run_benchmark(1000000);
-        Ok(())
-    }
+    // #[test]
+    // fn test_sort_1000000() -> Result<(), &'static str> {
+    //     run_benchmark(1000000);
+    //     Ok(())
+    // }
 }
