@@ -83,21 +83,39 @@ fn main() {
     ///////// LINKED LIST QUEUE END //////
     // let vec_queue: VQueue<i32> = VQueue::new();
     // const SIZE: usize = 10;
-    let condition = |x: i32| x >= 8;
-    println!("{}", condition(1));
 
-    // let mut vec = run_benchmark(1000000);
-    // println!("{:?}", vec);
+    ///CONDITION ON CRYSTAL BALL
+    // let condition = |x: i32| x >= 8;
+    // println!("{}", condition(1));
+
+    // // let mut vec = run_benchmark(1000000);
+    // // println!("{:?}", vec);
+
+    // BINARY SEARCH TREE
+    // let mut bst = BST::new(10); // Root Node
+    // let values_insert = vec![5,15,2,5,22,1];
+    // for i in &values_insert {
+    //     BST::insert(&mut bst, *i);
+    // }
+
+    // BST::print(&mut bst);
+
+    // BST::breath_first_search(&mut bst, 22);
+    let values_insert = vec![5, 15, 2, 5, 22, 1];
 
     let mut bst = BST::new(10); // Root Node
-    let values_insert = vec![5,15,2,5,22,1];
+    let mut bst2 = BST::new(9); // Root Node
+
+    // insert bst
     for i in &values_insert {
         BST::insert(&mut bst, *i);
     }
 
+    // insert bst2
+    for i in &values_insert {
+        BST::insert(&mut bst2, *i);
+    }
 
-    BST::print(&mut bst);
-
-
-    BST::breath_first_search(&mut bst, 22);
+    let res = BST::compare(&mut bst, &mut bst2);
+    println!("{}", res);
 }
