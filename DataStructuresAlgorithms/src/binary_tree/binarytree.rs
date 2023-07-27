@@ -113,6 +113,27 @@ impl BST {
         }
         result.push(current.value);
     }
+
+    pub fn breath_first_search(&mut self, needle: i32) -> bool {
+        let current = &mut self.root;
+        // println!("{}", current.value);
+        if current.value == needle {
+            // println!("FOUND THE NEEDLE");
+            return true;
+        }
+        if !current.left.is_none() {
+            if current.left.to_owned().unwrap().borrow_mut().breath_first_search(needle) {
+                return true;
+            };
+        }
+        if !current.right.is_none() {
+            if current.right.to_owned().unwrap().borrow_mut().breath_first_search(needle) {
+                return true;
+            };
+        }
+        return false;
+    }
+
 }
 
 #[cfg(test)]
@@ -127,14 +148,11 @@ mod tests {
     #[test]
     fn test_traverses() -> Result<(), &'static str> {
         let mut bst = BST::new(10); // Root Node
-
-        BST::insert(&mut bst, 5);
-        BST::insert(&mut bst, 15);
-        BST::insert(&mut bst, 2);
-        BST::insert(&mut bst, 5);
-        BST::insert(&mut bst, 22);
-        BST::insert(&mut bst, 1);
-
+        
+        let values_insert = vec![5,15,2,5,22,1];
+        for i in &values_insert {
+            BST::insert(&mut bst, *i);
+        }
 
         let inorder_vector = BST::inorder_traverse(&mut bst);
         assert_eq!(vec![1,2,5,5,10,15,22], inorder_vector);
@@ -144,6 +162,8 @@ mod tests {
 
         let postorder_vector = BST::postorder_traverse(&mut bst);
         assert_eq!(vec![1,2,5,5,22,15,10], postorder_vector);
+
+        
         //          10
         //        /    \
         //       5      15
@@ -151,15 +171,21 @@ mod tests {
         //    2     5      22
         //   /
         //  1
-
-        // let inorder: Vec<i32> = inorder_traverse(&mut bst);
-        // let preorder: Vec<i32> = preorder_traverse(&mut bst);
-        // let postorder: Vec<i32> = postorder_traverse(&mut bst);
         Ok(())
     }
 
     #[test]
     fn test_push_q() -> Result<(), &'static str> {
+        let mut bst = BST::new(10); // Root Node
+      
+        let values_insert = vec![5,15,2,5,22,1];
+        for i in &values_insert {
+            BST::insert(&mut bst, *i);
+        }
+        for i in &values_insert {
+            assert_eq!(true, BST::breath_first_search(&mut bst, *i));
+
+        }
         Ok(())
     }
 }

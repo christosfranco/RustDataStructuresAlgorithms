@@ -90,13 +90,14 @@ fn main() {
     // println!("{:?}", vec);
 
     let mut bst = BST::new(10); // Root Node
+    let values_insert = vec![5,15,2,5,22,1];
+    for i in &values_insert {
+        BST::insert(&mut bst, *i);
+    }
 
-    BST::insert(&mut bst, 5);
-    BST::insert(&mut bst, 15);
-    BST::insert(&mut bst, 2);
-    BST::insert(&mut bst, 5);
-    BST::insert(&mut bst, 22);
-    BST::insert(&mut bst, 1);
 
     BST::print(&mut bst);
+
+
+    BST::breath_first_search(&mut bst, 22);
 }

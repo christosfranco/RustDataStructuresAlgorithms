@@ -12,6 +12,7 @@ pub fn init_arr<const SIZE: usize>() -> [i32; SIZE] {
 }
 
 #[allow(dead_code)]
+// O(log(n))
 // return the Ok(index) of value if in array, otherwise Err("String")
 pub fn process_array(array: &[i32], needle: i32) -> Result<usize, String> {
     let mut low: usize = 0;
