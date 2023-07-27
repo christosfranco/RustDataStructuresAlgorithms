@@ -173,6 +173,35 @@ impl BST {
         return false;
     }
 
+    pub fn helper_depth_first_search(&mut self, needle: i32) -> bool {
+        let current = &mut self.root;
+        // println!("{}", current.value);
+        if current.value == needle {
+            // println!("FOUND THE NEEDLE");
+            return true;
+        }
+        // value of current node is less, so we must search right side
+        if current.value < needle {
+            return current
+                .right
+                .to_owned()
+                .unwrap()
+                .borrow_mut()
+                .breath_first_search(needle);
+        } else {
+            return current
+                .left
+                .to_owned()
+                .unwrap()
+                .borrow_mut()
+                .breath_first_search(needle);
+        }
+    }
+
+    pub fn depth_first_search(&mut self, needle: i32) -> bool {
+        return self.helper_depth_first_search(needle);
+    }
+
     // compare two BST to check equiality
     pub fn compare(bst1: &mut BST, bst2: &mut BST) -> bool {
         let node1 = &mut bst1.root;
@@ -250,7 +279,7 @@ mod tests {
     }
 
     #[test]
-    fn test_push_q() -> Result<(), &'static str> {
+    fn test_bfs() -> Result<(), &'static str> {
         let mut bst = BST::new(10); // Root Node
 
         let values_insert = vec![5, 15, 2, 5, 22, 1];
@@ -260,6 +289,44 @@ mod tests {
         for i in &values_insert {
             assert_eq!(true, BST::breath_first_search(&mut bst, *i));
         }
+        Ok(())
+    }
+
+    #[test]
+    fn test_dfs() -> Result<(), &'static str> {
+        let mut bst = BST::new(10); // Root Node
+
+        let values_insert = vec![5, 15, 2, 5, 22, 1];
+        for i in &values_insert {
+            BST::insert(&mut bst, *i);
+        }
+        for i in &values_insert {
+            assert_eq!(true, BST::depth_first_search(&mut bst, *i));
+        }
+        Ok(())
+    }
+
+    #[test]
+    fn test_dfs_false() -> Result<(), &'static str> {
+        let mut bst = BST::new(10); // Root Node
+
+        let values_insert = vec![5, 15, 2, 5, 22, 1];
+        for i in &values_insert {
+            BST::insert(&mut bst, *i);
+        }
+
+        let values_not_inserted = vec![3,4,6,7,8,9];
+
+        let mut res_vec:Vec<bool> = vec![true;values_not_inserted.len()];
+
+        for i in 0..values_not_inserted.len() {
+            res_vec[i] = (BST::depth_first_search(&mut bst, values_not_inserted[i]));
+        }
+
+        for i in &res_vec {
+            assert_eq!(false, *i);
+        }
+
         Ok(())
     }
 
@@ -307,13 +374,10 @@ mod tests {
         Ok(())
     }
 
-
-    
     #[test]
     fn test_compare_trees_unequal_depth() -> Result<(), &'static str> {
         let values_insert = vec![5, 15, 2, 5, 22, 1];
         let values_insert2 = vec![5, 15, 2, 5, 25, 1];
-
 
         let mut bst = BST::new(10); // Root Node
         let mut bst2 = BST::new(10); // Root Node
@@ -332,5 +396,4 @@ mod tests {
 
         Ok(())
     }
-
 }
